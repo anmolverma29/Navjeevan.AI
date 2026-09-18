@@ -54,6 +54,7 @@ with st.sidebar:
     st.markdown("### 📌 Internship Context")
     st.markdown("**Program:** 1M1B AI for Sustainability (IBM SkillsBuild & AICTE)")
     st.markdown("**Primary SDG:** SDG 12 (Responsible Consumption & Production)")
+    st.markdown("**AI Tools Used:** Prompt workflows engineered via **IBM BOB**, deployed via Gemini Vision API.")
     st.markdown("**Developer:** Anmol Verma")
 
 api_key = api_key_input or os.environ.get("GEMINI_API_KEY")
@@ -140,10 +141,22 @@ if st.session_state.uploaded_image is not None:
                         st.error(f"Error during analysis: {e}")
 
 # ==========================================
-# TABS FOR STRUCTURED OUTPUT
+# RESPONSIBLE AI COMPLIANCE BLOCK
 # ==========================================
 if st.session_state.analysis_result:
     st.markdown("---")
+    
+    with st.expander("🛡️ 1M1B Mandatory: Responsible AI Considerations", expanded=True):
+        st.markdown("""
+        **Fairness:** AI condition assessments are generated purely based on the physical state and material composition visible in the image, avoiding demographic or brand bias.
+        **Transparency:** Navjeevan.AI functions strictly as a decision-support system. All DIY instructions and disposal pathways are AI-generated guidelines and require human verification before acting.
+        **Ethics:** The system is explicitly prompted to generate beginner-safe DIY steps and avoids recommending hazardous handling techniques. 
+        **Privacy:** Uploaded images and location data are processed in-memory for immediate inference and are not stored in any persistent database.
+        """)
+
+# ==========================================
+# TABS FOR STRUCTURED OUTPUT
+# ==========================================
     tab_report, tab_diy, tab_ngo, tab_chat = st.tabs([
         "📊 Full Analysis Report", 
         "🛠️ DIY Upcycling & Visual Guide", 
